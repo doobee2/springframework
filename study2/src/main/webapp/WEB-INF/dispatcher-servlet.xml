@@ -12,23 +12,20 @@
     <!--  접근 자원에 대한 권한 설정 -->
     <resources mapping="/resources/**" location="/resources/" />
     <resources mapping="/data/**" location="/data/" />
-
     <resources mapping="/admin/**" location="/WEB-INF/views/admin" />
+    <resources mapping="/user/**" location="/WEB-INF/views/user" />
     <resources mapping="/board/**" location="/WEB-INF/views/board" />
     <resources mapping="/check/**" location="/WEB-INF/views/check" />
     <resources mapping="/guestbook/**" location="/WEB-INF/views/guestbook" />
     <resources mapping="/free/**" location="/WEB-INF/views/free" />
+    <resources mapping="/qna/**" location="/WEB-INF/views/qna" />
     <resources mapping="/include/**" location="/WEB-INF/views/include" />
     <resources mapping="/member/**" location="/WEB-INF/views/member" />
     <resources mapping="/notice/**" location="/WEB-INF/views/notice" />
-    <resources mapping="/qna/**" location="/WEB-INF/views/qna" />
     <resources mapping="/reservation/**" location="/WEB-INF/views/reservation" />
     <resources mapping="/util/**" location="/WEB-INF/views/util" />
-    <resources mapping="/sample/**" location="/WEB-INF/views/sample" />
-    <resources mapping="/sample2/**" location="/WEB-INF/views/sample2" />
     <resources mapping="/test/**" location="/WEB-INF/views/test" />
     <resources mapping="/error/**" location="/WEB-INF/views/error" />
-    <resources mapping="/ajax/**" location="/WEB-INF/views/ajax" />
 
     <!-- 컨트롤러에서 던진 URL : /notice/noticeList -->
     <!-- 실제 존재하는 URL : /WEB-INF/views/notice/noticeList.jsp -->
@@ -48,11 +45,11 @@
 
     <!-- 멀티파트 업로드 디렉토리 지정 -->
     <beans:bean id="uploadPath" class="java.lang.String">
-        <beans:constructor-arg value="D:\seulbee\spring1\study2\src\main\webapp\resources\upload" />
+        <beans:constructor-arg value="D:\kim\springStudy\study2\src\main\webapp\resources\upload" />
     </beans:bean>
 
     <!-- 기본 메인 패키지 및 컨트롤러 패키지 설정 -->
-    <context:component-scan base-package="kr.ed.haebeop.controller" />
+    <context:component-scan base-package="kr.ed.haebeop" />
     <annotation-driven />
 
     <!-- 인터셉터 : 글쓰기와 같은 회원권한을 가진 경우는 반드시 로그인 페이지를 거쳐서 시도할 것  -->
@@ -60,21 +57,14 @@
     <beans:bean id="adminIntercepter" class="kr.ed.haebeop.util.AdminInterceptor" />
     <interceptors>
         <interceptor>
-            <mapping path="/free/**"/>
-            <beans:ref bean="sampleIntercepter" />
+            <mapping path="/sample/**"/>
+            <beans:ref bean="userIntercepter" />
         </interceptor>
         <interceptor>
             <mapping path="/admin/**"/>
             <beans:ref bean="adminIntercepter" />
         </interceptor>
     </interceptors>
-
-<!--    <beans:bean id="fileDownLoadView" class="kr.ed.haebeop.controller.FileDownLoadView"/>-->
-<!--    <beans:bean id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">-->
-<!--        <beans:property name="order" value="0" />-->
-<!--    </beans:bean>-->
-
-
 
     <!-- free 디렉토리의 view(.jsp)를 접근하려면 SampleInterceptor 클래스에
     제시한 조건이 맞으면 접근 가능하게 할 수 있도록 함 -->

@@ -15,5 +15,6 @@ public interface UserService {
     public User loginCheck(User mdto) throws Exception;
     public boolean login(HttpServletRequest request) throws Exception;
     public void userUpdate(User mdto) throws Exception;
-    public void userDelete(User mdto) throws Exception;
+    public void userDelete(String id) throws Exception;
+
 }

@@ -12,5 +12,5 @@ public interface UserPersistence {
     public User loginCheck(User mdto) throws Exception;
     public User login(User mdto) throws Exception;
     public void userUpdate(User mdto) throws Exception;
-    public void userDelete(User mdto) throws Exception;
+    public void userDelete(String id) throws Exception;
 }

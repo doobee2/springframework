@@ -42,8 +42,10 @@
         </bean>
 
         <context:annotation-config/>
+        <!--
         <bean id="testService1" class="kr.ed.haebeop.service.TestServiceImpl" />
         <bean id="testRepository1" class="kr.ed.haebeop.repository.TestRepositoryImpl" />
+        -->
 
         <!-- @Transactional 어노테이션 처리 -->
         <tx:annotation-driven transaction-manager="transactionManager"/>

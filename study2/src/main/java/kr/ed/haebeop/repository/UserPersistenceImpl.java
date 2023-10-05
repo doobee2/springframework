@@ -20,36 +20,36 @@ public class UserPersistenceImpl implements UserPersistence{
 
     @Override
     public User getUser(String id) throws Exception {
-        return sqlSession.selectOne("user.geUser");
+        return sqlSession.selectOne("user.getUser", id);
     }
 
     @Override
     public void userInsert(User dto) throws Exception {
-        sqlSession.insert("user.userInsert");
+        sqlSession.insert("user.userInsert", dto);
     }
 
     @Override
     public User signIn(User mdto) throws Exception {
-        return null;
+        return sqlSession.selectOne("user.signIn", mdto);
     }
 
     @Override
     public User loginCheck(User mdto) throws Exception {
-        return null;
+        return sqlSession.selectOne("user.loginCheck", mdto);
     }
 
     @Override
     public User login(User mdto) throws Exception {
-        return null;
+        return sqlSession.selectOne("user.login", mdto);
     }
 
     @Override
     public void userUpdate(User mdto) throws Exception {
-
+        sqlSession.update("user.userUpdate", mdto);
     }
 
     @Override
-    public void userDelete(User mdto) throws Exception {
-
+    public void userDelete(String id) throws Exception {
+        sqlSession.delete("user.userDelete");
     }
 }
