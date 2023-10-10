@@ -14,7 +14,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/check/")
-public class checkController {
+public class CheckController {
 
     @GetMapping("check1")
     public String check1(Model model) {
